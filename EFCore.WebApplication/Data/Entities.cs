@@ -1,13 +1,9 @@
 ﻿using EFCore.WebApplication.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace EFCore.WebApplication.Data
+namespace EFCore.WebApplication
 {
-    public class Contexto : DbContext
+    public class Entities : DbContext
     {
         public DbSet<Arma> Armas { get; set; }
         public DbSet<Batalha> Batalhas { get; set; }
@@ -15,7 +11,7 @@ namespace EFCore.WebApplication.Data
         public DbSet<HeroiBatalha> HeroisBatalhas { get; set; }
         public DbSet<IdentidadeSecreta> IdentidadeSecretas { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
             optionsBuilder.UseSqlServer(@"Password=sql@Master;Persist Security Info=True;User ID=sa;Initial Catalog=HeroApplication;Data Source=DESKTOP-3FTN6K6\SQLEXPRESS");
